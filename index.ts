@@ -7,6 +7,9 @@ import { viewerHTML } from './public/viewer.ts';
 const app = express();
 const PORT = process.env.PORT || 3000;
 const VERSION = '1.0.0';
+const BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://signature.starside.io' 
+  : `http://localhost:${PORT}`;
 
 // Middleware
 app.use(cors());
@@ -54,11 +57,11 @@ app.get('/', (_req: Request, res: Response) => {
     description: 'Get unhinged email signatures for every occasion',
     version: VERSION,
     endpoints: {
-      viewer: 'GET /signature/view - Interactive HTML viewer with copy button',
-      random: 'GET /signature - Random signature from any category',
-      category: 'GET /signature/:category - Get signature from specific category (unbothered, unhinged, unleashed)',
-      health: 'GET /health - API health check',
-      about: 'GET /about - API information'
+      viewer: `GET ${BASE_URL}/signature/view - Interactive HTML viewer with copy button`,
+      random: `GET ${BASE_URL}/signature - Random signature from any category`,
+      category: `GET ${BASE_URL}/signature/:category - Get signature from specific category (unbothered, unhinged, unleashed)`,
+      health: `GET ${BASE_URL}/health - API health check`,
+      about: `GET ${BASE_URL}/about - API information`
     },
     categories: {
       unbothered: 'Tier 1: Slightly quirky, mostly professional',
@@ -126,7 +129,7 @@ app.get('/about', (_req: Request, res: Response) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`✨ Signature-as-a-Service running on http://localhost:${PORT}`);
+  console.log(`✨ Signature-as-a-Service running on ${BASE_URL}`);
   console.log(`📊 Loaded ${signatures.length} signatures`);
-  console.log(`🎯 API ready at http://localhost:${PORT}/signature`);
+  console.log(`🎯 API ready at ${BASE_URL}/signature`);
 });
