@@ -1,12 +1,12 @@
 import express, { type Request, type Response } from 'express';
 import rateLimit from 'express-rate-limit';
 import cors from 'cors';
-import signaturesData from './data/signatures.json' with { type: 'json' };
-import pkg from './package.json' with { type: 'json' };
+import { signatures } from './data/signatures.ts';
 import { viewerHTML } from './public/viewer.ts';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const VERSION = '1.0.0';
 
 // Middleware
 app.use(cors());
@@ -26,9 +26,6 @@ interface Signature {
   text: string;
   tier: 'unbothered' | 'unhinged' | 'unleashed';
 }
-
-// Type-assert the imported JSON
-const signatures = signaturesData as Signature[];
 
 // Helper function to get random signature by tier
 function getRandomSignature(tier?: string): Signature {
@@ -55,7 +52,7 @@ app.get('/', (_req: Request, res: Response) => {
   res.json({
     message: '✨ Signature-as-a-Service',
     description: 'Get unhinged email signatures for every occasion',
-    version: pkg.version,
+    version: VERSION,
     endpoints: {
       viewer: 'GET /signature/view - Interactive HTML viewer with copy button',
       random: 'GET /signature - Random signature from any category',
@@ -116,10 +113,10 @@ app.get('/health', (_req: Request, res: Response) => {
 // About endpoint
 app.get('/about', (_req: Request, res: Response) => {
   res.json({
-    name: pkg.name,
-    version: pkg.version,
-    description: pkg.description,
-    author: pkg.author,
+    name: 'signature-as-a-service',
+    version: VERSION,
+    description: 'An API that serves unhinged email signatures across three tiers: Unbothered, Unhinged, and Unleashed',
+    author: 'Burlet Mederic <mederic.burlet@gmail.com>',
     repository: 'https://github.com/starside-io/signature-as-a-service',
     totalSignatures: signatures.length,
     categories: ['unbothered', 'unhinged', 'unleashed'],

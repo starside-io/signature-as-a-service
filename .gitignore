@@ -1,9 +1,14 @@
 node_modules/
 .DS_Store
 .env
+.env.local
+.env.*.local
 *.log
 .vscode/
 .idea/
 dist/
+
+# Vercel
+.vercel
 
 .github
