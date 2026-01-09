@@ -1,0 +1,33 @@
+{
+  "name": "signature-as-a-service",
+  "version": "1.0.0",
+  "description": "An API that serves unhinged email signatures across three tiers: Unbothered, Unhinged, and Unleashed",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "start": "node --experimental-strip-types index.ts",
+    "dev": "node --watch --experimental-strip-types index.ts"
+  },
+  "keywords": [
+    "api",
+    "email",
+    "signatures",
+    "express",
+    "typescript"
+  ],
+  "author": "Burlet Mederic <mederic.burlet@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^22.10.5"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}
