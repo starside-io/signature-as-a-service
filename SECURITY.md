@@ -19,7 +19,7 @@ We take the security of Signature-as-a-Service seriously. If you discover a secu
 
 Instead, please report security vulnerabilities by emailing:
 
-**mederic.burlet@gmail.com**
+**dev@starside.io**
 
 You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
 
