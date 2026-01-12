@@ -17,12 +17,41 @@ Built with modern TypeScript and powered by existential dread.
 
 ### Base URL
 ```
-http://localhost:3000
+Production: https://signature.starside.io
+Local: http://localhost:3000
 ```
 
 ### Endpoints
 
-#### Get Random Signature (Any Tier)
+#### Root - API Information
+```bash
+GET /
+```
+
+Returns API documentation, available endpoints, and signature categories.
+
+**Example Response:**
+```json
+{
+  "message": "✨ Signature-as-a-Service",
+  "description": "Get unhinged email signatures for every occasion",
+  "version": "1.0.0",
+  "endpoints": {
+    "viewer": "GET /signature/view - Interactive HTML viewer with copy button",
+    "random": "GET /signature - Random signature from any category",
+    "category": "GET /signature/:category - Get signature from specific category",
+    "health": "GET /health - API health check",
+    "about": "GET /about - API information"
+  },
+  "categories": {
+    "unbothered": "Tier 1: Slightly quirky, mostly professional",
+    "unhinged": "Tier 2: Definitely not HR-approved",
+    "unleashed": "Tier 3: Complete chaos energy"
+  }
+}
+```
+
+#### Get Random Signature (Any Category)
 ```bash
 GET /signature
 ```
@@ -30,12 +59,12 @@ GET /signature
 **Example Response:**
 ```json
 {
-  "signature": "Thanks,\\n\\n--\\nSent with mild inconvenience",
+  "signature": "With chaotic neutrality,",
   "tier": "unbothered"
 }
 ```
 
-#### Get Signature by Tier
+#### Get Signature by Category
 ```bash
 GET /signature/unbothered
 GET /signature/unhinged
@@ -45,17 +74,50 @@ GET /signature/unleashed
 **Example Response:**
 ```json
 {
-  "signature": "Best regards,\\n\\n--\\nSent from a dimension where I care about this\\nUnfortunately, not this one",
+  "signature": "Powered by spite,",
   "tier": "unleashed"
 }
 ```
 
-#### API Info
+#### Interactive Signature Viewer
 ```bash
-GET /
+GET /signature/view
 ```
 
-Returns API documentation and available endpoints.
+Opens an interactive HTML page with a signature generator and copy-to-clipboard functionality.
+
+#### Health Check
+```bash
+GET /health
+```
+
+**Example Response:**
+```json
+{
+  "status": "ok",
+  "uptime": 12345.67,
+  "timestamp": "2026-01-12T10:30:00.000Z"
+}
+```
+
+#### About API
+```bash
+GET /about
+```
+
+**Example Response:**
+```json
+{
+  "name": "signature-as-a-service",
+  "version": "1.0.0",
+  "description": "An API that serves unhinged email signatures across three tiers",
+  "author": "Burlet Mederic <mederic.burlet@gmail.com>",
+  "repository": "https://github.com/starside-io/signature-as-a-service",
+  "totalSignatures": 95,
+  "categories": ["unbothered", "unhinged", "unleashed"],
+  "status": "alive and unhinged"
+}
+```
 
 ### Rate Limit
 `120 requests per minute per IP`
@@ -121,45 +183,70 @@ PORT=5000 npm start
 
 ```
 signature-as-a-service/
-├── index.ts           # Express API server
-├── signatures.json    # Signature database (3 tiers)
+├── index.ts              # Express API server
 ├── package.json
-├── tsconfig.json      # Modern TypeScript config
+├── tsconfig.json         # Modern TypeScript config
+├── vercel.json           # Vercel deployment config
+├── data/
+│   └── signatures.ts     # Signature database with types
+├── public/
+│   └── viewer.ts         # Interactive HTML viewer
 └── README.md
 ```
 
 ## 🎨 Adding Your Own Signatures
 
-Edit `signatures.json` to add more signatures:
+Edit `data/signatures.ts` to add more signatures:
 
-```json
-{
-  "text": "Your signature text here\\n\\nWith line breaks",
-  "tier": "unbothered"
-}
+```typescript
+export const signatures: Signature[] = [
+  { "text": "Your new signature,", "tier": "unbothered" },
+  { "text": "Another signature,", "tier": "unhinged" },
+  { "text": "Complete chaos,", "tier": "unleashed" }
+];
 ```
 
-Choose from tiers: `unbothered`, `unhinged`, or `unleashed`
+Choose from tiers: from any category
+curl https://signature.starside.io/signature
 
-## 🧪 Example Usage
+# Specific category
+curl https://signature.starside.io/signature/unhinged
 
-### cURL
-```bash
-# Random signature
-curl http://localhost:3000/signature
+# API information
+curl https://signature.starside.io/
 
-# Specific tier
-curl http://localhost:3000/signature/unhinged
+# About endpoint
+curl https://signature.starside.io/about
+
+# Health check
+curl https://signature.starside.io/health
 ```
 
 ### JavaScript/TypeScript
 ```typescript
-const response = await fetch('http://localhost:3000/signature/unleashed');
+// Get random signature
+const response = await fetch('https://signature.starside.io/signature');
 const data = await response.json();
-console.log(data.signature);
+console.log(data.signature); // "Powered by spite,"
+console.log(data.tier);      // "unleashed"
+
+// Get specific category
+const unleashed = await fetch('https://signature.starside.io/signature/unleashed');
+const signature = await unleashed.json();
 ```
 
 ### Python
+```python
+import requests
+
+# Random signature
+response = requests.get('https://signature.starside.io/signature')
+data = response.json()
+print(f"{data['signature']} (Tier: {data['tier']})")
+
+# Specific category
+unhinged = requests.get('https://signature.starside.io/signature/unhinged')
+print(unhinged.json()
 ```python
 import requests
 
