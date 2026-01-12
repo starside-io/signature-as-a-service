@@ -84,5 +84,21 @@ export const signatures: Signature[] = [
   { "text": "Chronically online,", "tier": "unhinged" },
   { "text": "With malicious compliance,", "tier": "unleashed" },
   { "text": "Emotionally under construction,", "tier": "unhinged" },
-  { "text": "Awaiting character redemption,", "tier": "unhinged" }
+  { "text": "Awaiting character redemption,", "tier": "unhinged" },
+  { "text": "Sent with extreme prejudice,", "tier": "unleashed" },
+  { "text": "This email has seen things,", "tier": "unhinged" },
+  { "text": "May this email haunt the timeline,", "tier": "unleashed" },
+  { "text": "From the desk of \"I tried\",", "tier": "unhinged" },
+  { "text": "Let's see how this plays out,", "tier": "unbothered" },
+  { "text": "Sent under duress,", "tier": "unhinged" },
+  { "text": "With mounting concern and no solutions,", "tier": "unhinged" },
+  { "text": "As previously threatened,", "tier": "unleashed" },
+  { "text": "With forced optimism and clenched jaw,", "tier": "unhinged" },
+  { "text": "This felt necessary at the time,", "tier": "unhinged" },
+  { "text": "Sent before thinking better of it,", "tier": "unhinged" },
+  { "text": "With the confidence of someone guessing,", "tier": "unhinged" },
+  { "text": "Regrettably looping you in,", "tier": "unhinged" },
+  { "text": "Have the weekend you deserve,", "tier": "unleashed" },
+  { "text": "This concludes my contribution,", "tier": "unbothered" },
+  { "text": "Time will tell,", "tier": "unbothered" }
 ];
