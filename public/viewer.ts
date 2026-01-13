@@ -3,7 +3,8 @@ export const viewerHTML = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Signature-as-a-Service</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <title> Signature-as-a-Service</title>
     <style>
         * {
             margin: 0;
@@ -46,6 +47,14 @@ export const viewerHTML = `<!DOCTYPE html>
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 1;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 150px;
+            height: auto;
         }
         h1 {
             text-align: center;
@@ -176,6 +185,9 @@ export const viewerHTML = `<!DOCTYPE html>
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="/saas.png" alt="Signature-as-a-Service Logo" />
+        </div>
         <h1>✨ Signature-as-a-Service</h1>
         <p class="subtitle">Unhinged email signatures for every occasion</p>
         

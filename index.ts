@@ -3,6 +3,11 @@ import rateLimit from 'express-rate-limit';
 import cors from 'cors';
 import { signatures } from './data/signatures.ts';
 import { viewerHTML } from './public/viewer.ts';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +19,9 @@ const BASE_URL = process.env.NODE_ENV === 'production'
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files (for logo)
+app.use(express.static(path.join(__dirname, 'assets')));
 
 // Rate limiting: 120 requests per minute per IP
 const limiter = rateLimit({
@@ -88,6 +96,11 @@ app.get('/signature/:category', (req: Request, res: Response) => {
   // Check if it's the view route
   if (category === 'view') {
     return res.send(viewerHTML);
+  }
+  
+  // Ignore requests for static files (e.g., images)
+  if (category.includes('.')) {
+    return res.status(404).json({ error: 'Not found' });
   }
   
   if (!validCategories.includes(category.toLowerCase())) {

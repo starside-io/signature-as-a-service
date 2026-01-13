@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./assets/saas.png" alt="Signature-as-a-Service Logo" width="200" />
+</div>
+
 # ✨ Signature-as-a-Service
 
 Ever needed an email signature that truly reflects your mood? This API serves unhinged email signatures across three carefully crafted tiers of chaos.
