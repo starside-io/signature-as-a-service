@@ -8,8 +8,7 @@ Ever needed an email signature that truly reflects your mood? This API serves un
 
 Built with modern TypeScript and powered by existential dread.
 
-![signature-as-a-service](https://img.shields.io/badge/status-active-brightgreen) ![License](https://img.shields.io/github/license/starside-io/signature-as-a-service
-) ![Typescript](https://img.shields.io/badge/language-Typescript-blue)
+![signature-as-a-service](https://img.shields.io/badge/status-active-brightgreen) ![License](https://img.shields.io/badge/license-Apache%202.0-blue) ![Typescript](https://img.shields.io/badge/language-Typescript-blue)
 
 ## 🎯 Signature Tiers
 
@@ -261,7 +260,7 @@ print(data['signature'])
 
 ## 📄 License
 
-MIT — Use responsibly. Or don't. We're not the boss of you.
+Apache 2.0 — Use responsibly. Or don't. We're not the boss of you.
 
 ## 🤝 Contributing
 
